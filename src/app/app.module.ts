@@ -1,4 +1,3 @@
-
 import { NgModule, Pipe } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,7 +16,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { TablaPacientesComponent } from './pacientes/tablaPacientes/tablaPacientes.component';
 import { FormularioPacienteComponent } from './pacientes/formulario-paciente/formulario-paciente.component';
-// import { PacienteCrudComponent } from './pacientes/paciente-crud/paciente-crud.component';
+import { BuscarComponent } from './pacientes/buscar/buscar.component';
 // import { DetallePacienteComponent } from './pacientes/detallePaciente/detallePaciente.component';
 // import { ConsultasComponent } from './consultas/consultas/consultas.component';
 // import { UnisauComponent } from './UNISAU/unisau/unisau.component';
@@ -29,7 +28,8 @@ const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'tablaPacientes', component: TablaPacientesComponent },
   { path: 'crear', component: FormularioPacienteComponent },
-  { path: 'paciente/edit/:id', component: FormularioPacienteComponent},
+  { path: 'paciente/edit/:id', component: FormularioPacienteComponent },
+  { path: 'buscar', component: BuscarComponent},
   // { path: 'detalleP/view/:id', component: DetallePacienteComponent },
   // { path: 'consultas', component: ConsultasComponent },
   // { path: 'unisau', component: UnisauComponent },
@@ -45,6 +45,7 @@ const routes: Routes = [
     NavbarComponent,
     HomeComponent,
     TablaPacientesComponent,
+    BuscarComponent,
     // PacienteCrudComponent,
     // PacientesComponent,
     // UnisauComponent,
@@ -69,6 +70,7 @@ const routes: Routes = [
       { path: 'pacientes', component: TablaPacientesComponent },
       { path: 'crear', component: FormularioPacienteComponent },
       { path: 'paciente/edit/:id', component: FormularioPacienteComponent },
+      { path: 'buscar', component: BuscarComponent},
       // { path: 'detalleP/view/:id', component: DetallePacienteComponent },
       // { path: 'consultas', component: ConsultasComponent },
       // { path: 'unisau', component: UnisauComponent },

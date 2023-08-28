@@ -16,7 +16,7 @@ export class TablaPacientesComponent{
   public searchText: string = '';
   public totalRegistros: number = 10; // Total de registros en la lista
   public paginaActual: number = 1; // Página actual
-
+  public expedienteBuscar: number = 0;
 
   constructor(private pacientesService: PacientesService, private router: Router, private activateRoute: ActivatedRoute) { }
   reset: boolean = false;
@@ -34,8 +34,27 @@ export class TablaPacientesComponent{
       this.filteredPacientes = data;
       this.paginarPacientes();//Llama a la función aquí para paginar automáticamente
     });
-
   }
+
+
+
+  buscarExp() {
+    if (this.expedienteBuscar) {
+      this.pacientesService.getPaciente(this.expedienteBuscar).subscribe(data => {
+        this.pacientes = data;
+        this.filteredPacientes = data;
+        this.paginarPacientes();
+      });
+    } else {
+      // Si no se proporciona un número de expediente, se reinicia la lista de pacientes
+      this.pacientes = [...this.filteredPacientes];
+      this.paginarPacientes();
+    }
+  }
+
+
+
+
 
   delete(id: number) {
     this.pacientesService.deletePaciente(id).subscribe(data => {
