@@ -14,7 +14,7 @@ export class TablaPacientesComponent{
   public pacientes: Ipaciente[] = []; // Registros a mostrar en la página actual
   public filteredPacientes: Ipaciente[] = [];
   public searchText: string = '';
-  public totalRegistros: number = 15; // Total de registros en la lista
+  public totalRegistros: number = 10; // Total de registros en la lista
   public paginaActual: number = 1; // Página actual
 
 
@@ -23,6 +23,8 @@ export class TablaPacientesComponent{
 
   ngOnInit() {
     this.getPacientes();
+    this.paginarPacientes();
+
   }
 
 
@@ -30,11 +32,13 @@ export class TablaPacientesComponent{
     this.pacientesService.getPacientes().subscribe(data => {
       this.pacientes = data.sort((a: { expediente: number; }, b: { expediente: number; }): number => b.expediente - a.expediente);
       this.filteredPacientes = data;
+      this.paginarPacientes();//Llama a la función aquí para paginar automáticamente
     });
+
   }
 
-  delete(exp: number) {
-    this.pacientesService.deletePaciente(exp).subscribe(data => {
+  delete(id: number) {
+    this.pacientesService.deletePaciente(id).subscribe(data => {
       this.pacientes = data;
       this.ngOnInit();
     });
@@ -55,6 +59,7 @@ export class TablaPacientesComponent{
   order: string = 'asc';
 
 
+
   sortTable(colu: string) {
     if (this.order === 'asc') {
       this.pacientes.sort((a, b) => a[colu] > b[colu] ? 1 : -1);
@@ -65,14 +70,13 @@ export class TablaPacientesComponent{
     }
   }
 
-
   onPageChange(pageNumber: number) {
     this.paginaActual = pageNumber;
     this.paginarPacientes();
   }
 
   paginarPacientes() {
-    const tamanoPagina = 15;
+    const tamanoPagina = 10;
     const indiceInicio = (this.paginaActual - 1) * tamanoPagina;
     const indiceFin = indiceInicio + tamanoPagina;
     this.filteredPacientes = this.pacientes.slice(indiceInicio, indiceFin);
@@ -82,10 +86,17 @@ export class TablaPacientesComponent{
 
   getPaginas(): number[] {
     const totalPaginas = Math.ceil(this.filteredPacientes.length / this.totalRegistros);
-    return Array.from({ length: totalPaginas }, (_, index) => index + 1);
+
+    // Verificar si totalPaginas es válido antes de crear el array
+    if (totalPaginas <= 0) {
+      return [];
+    }
+
+    return Array.from({ length: 10 }, (_, index) => index + 1);
   }
 
-  totalPagina(): number {
+
+  totalPaginas(): number {
     return Math.ceil(this.pacientes.length / this.totalRegistros);
 
   }

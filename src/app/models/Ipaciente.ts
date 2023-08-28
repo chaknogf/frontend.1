@@ -1,5 +1,12 @@
+import { Municipio } from './../enums/enums';
+import { Nacionalidad } from "../enums/enums";
+
+
+
+
+
 export interface Ipaciente {
-  [key: string]: string | number | boolean | Date;
+  [key: string]: string | number | boolean | Date | Nacionalidad[]| Municipio[]  ;
   id: number;
   expediente: number;
   nombre: string;
@@ -35,6 +42,7 @@ export interface Ipaciente {
   academic: string;
   parents: string;
   lenguage: string;
+
 
 }
 

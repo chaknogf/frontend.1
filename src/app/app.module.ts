@@ -8,12 +8,15 @@ import { ReactiveFormsModule } from '@angular/forms'; // Importa ReactiveFormsMo
 import { FormatoDPIPipe } from './pipe/formatoDPI.pipe';
 import { NumberToTextPipe } from './pipe/number-to-text.pipe';
 import { EdadPipe } from './pipe/Edad.pipe';
+import { FortmatPhone } from './pipe/telefono.pipe';
+
 
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { TablaPacientesComponent } from './pacientes/tablaPacientes/tablaPacientes.component';
+import { FormularioPacienteComponent } from './pacientes/formulario-paciente/formulario-paciente.component';
 // import { PacienteCrudComponent } from './pacientes/paciente-crud/paciente-crud.component';
 // import { DetallePacienteComponent } from './pacientes/detallePaciente/detallePaciente.component';
 // import { ConsultasComponent } from './consultas/consultas/consultas.component';
@@ -25,8 +28,8 @@ import { TablaPacientesComponent } from './pacientes/tablaPacientes/tablaPacient
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'tablaPacientes', component: TablaPacientesComponent },
-  // { path: 'paciente-crud', component: PacienteCrudComponent },
-  // { path: 'paciente/edit/:id', component: PacienteCrudComponent },
+  { path: 'crear', component: FormularioPacienteComponent },
+  { path: 'paciente/edit/:id', component: FormularioPacienteComponent},
   // { path: 'detalleP/view/:id', component: DetallePacienteComponent },
   // { path: 'consultas', component: ConsultasComponent },
   // { path: 'unisau', component: UnisauComponent },
@@ -52,6 +55,8 @@ const routes: Routes = [
     FormatoDPIPipe,
     NumberToTextPipe,
     EdadPipe,
+    FortmatPhone,
+    FormularioPacienteComponent,
 
    ],
   imports: [
@@ -60,10 +65,10 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot([
-      // { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'pacientes', component: TablaPacientesComponent },
-      // { path: 'paciente-crud', component: PacienteCrudComponent },
-      // { path: 'paciente/edit/:id', component: PacienteCrudComponent },
+      { path: 'crear', component: FormularioPacienteComponent },
+      { path: 'paciente/edit/:id', component: FormularioPacienteComponent },
       // { path: 'detalleP/view/:id', component: DetallePacienteComponent },
       // { path: 'consultas', component: ConsultasComponent },
       // { path: 'unisau', component: UnisauComponent },

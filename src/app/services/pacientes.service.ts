@@ -32,8 +32,8 @@ export class PacientesService {
     return this.http.put(this.urlapi + "/paciente/" + exp, updateP);
   }
 
-  deletePaciente(exp: number): Observable<any>{
-    return this.http.delete(this.urlapi + "/paciente/" + exp);
+  deletePaciente(id: number): Observable<any>{
+    return this.http.delete(this.urlapi + "/borrar/" + id);
   }
 
   Expediente(): Observable<any> {
