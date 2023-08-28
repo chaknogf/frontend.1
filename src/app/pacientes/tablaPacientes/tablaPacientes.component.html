@@ -1,24 +1,11 @@
 <!-- Título -->
 <h1>Lista de Pacientes</h1>
 
-<div class="header bg-dark border-radius" data-bs-theme="dark">
-  <!-- Barra de búsqueda a la izquierda -->
-  <div class="col-md-6">
-    <label>buscar</label>
-    <form (ngSubmit)="buscarExp()">
-      <input
-        type="number"
-        id="buscarexp"
-        name="buscarExp"
-        class="form-control"
-        [(ngModel)]="expedienteBuscar"
-        placeholder="Buscar paciente..."
-        autofocus
-        (keyup.enter)="buscarExp()"
-      >
-      <button type="submit">Buscar</button>
-    </form>
-  </div>
+<div>
+ <button (click)="buscarPaciente()">Buscar</button>
+  <input id="expedienteInput" type="number" [(ngModel)]="expedienteBuscar" (keyup.enter)="buscarPaciente()" />
+</div>
+
 
   <div class="flex">
     <button routerLink="/crear-paciente" [routerLink]="['/crear']" class="create-button float-end"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
@@ -29,7 +16,7 @@
   <!-- Botón Crear a la derecha -->
 
 
-</div>
+
 
   <table class="table rounded-table table-hover table-striped border-radius" aria-labelledby="tableLabel" *ngIf="pacientes.length > 0">
     <thead>

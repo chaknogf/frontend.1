@@ -24,6 +24,7 @@ export class TablaPacientesComponent{
   ngOnInit() {
     this.getPacientes();
     this.paginarPacientes();
+    this.buscarPaciente();
 
   }
 
@@ -37,20 +38,18 @@ export class TablaPacientesComponent{
   }
 
 
-
-  buscarExp() {
-    if (this.expedienteBuscar) {
+  buscarPaciente() {
+    if (this.expedienteBuscar === 0) {
+      this.getPacientes(); // Si no se proporciona expediente, muestra todos los pacientes
+    } else {
       this.pacientesService.getPaciente(this.expedienteBuscar).subscribe(data => {
-        this.pacientes = data;
         this.filteredPacientes = data;
         this.paginarPacientes();
       });
-    } else {
-      // Si no se proporciona un número de expediente, se reinicia la lista de pacientes
-      this.pacientes = [...this.filteredPacientes];
-      this.paginarPacientes();
     }
   }
+
+
 
 
 
@@ -63,15 +62,7 @@ export class TablaPacientesComponent{
     });
   }
 
-  searchPaciente() {
-    if (this.searchText) {
-      this.filteredPacientes = this.pacientes.filter(paciente =>
-        paciente.expediente.toString().includes(this.searchText)
-      );
-    } else {
-      this.filteredPacientes = this.pacientes;
-    }
-  }
+
 
 
   busqueda: string = '';
