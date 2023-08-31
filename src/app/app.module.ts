@@ -8,6 +8,7 @@ import { FormatoDPIPipe } from './pipe/formatoDPI.pipe';
 import { NumberToTextPipe } from './pipe/number-to-text.pipe';
 import { EdadPipe } from './pipe/Edad.pipe';
 import { FortmatPhone } from './pipe/telefono.pipe';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -57,7 +58,7 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-
+     MatTableModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'pacientes', component: TablaPacientesComponent },

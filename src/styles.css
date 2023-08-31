@@ -1,6 +1,6 @@
 
 @charset "UTF-8";
-
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 /*!
  * Bootswatch v5.3.1 (https://bootswatch.com)
