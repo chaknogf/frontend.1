@@ -17,10 +17,9 @@ import { HomeComponent } from './home/home.component';
 import { TablaPacientesComponent } from './pacientes/tablaPacientes/tablaPacientes.component';
 import { FormularioPacienteComponent } from './pacientes/formulario-paciente/formulario-paciente.component';
 import { BuscarComponent } from './pacientes/buscar/buscar.component';
-// import { DetallePacienteComponent } from './pacientes/detallePaciente/detallePaciente.component';
-// import { ConsultasComponent } from './consultas/consultas/consultas.component';
-// import { UnisauComponent } from './UNISAU/unisau/unisau.component';
-// import { ConstanciasComponent } from './constancias/constancias/constancias.component';
+import { IngresoComponent } from './pacientes/ingreso/ingreso.component';
+import { CitasComponent } from './citas/citas/citas.component';
+
 
 
 
@@ -29,12 +28,9 @@ const routes: Routes = [
   { path: 'tablaPacientes', component: TablaPacientesComponent },
   { path: 'crear', component: FormularioPacienteComponent },
   { path: 'paciente/edit/:id', component: FormularioPacienteComponent },
-  { path: 'buscar', component: BuscarComponent},
-  // { path: 'detalleP/view/:id', component: DetallePacienteComponent },
-  // { path: 'consultas', component: ConsultasComponent },
-  // { path: 'unisau', component: UnisauComponent },
-  // { path: 'constancias', component: ConstanciasComponent },
-
+  { path: 'buscar/view/:id', component: BuscarComponent},
+  { path: 'ingreso/view/:id', component: IngresoComponent },
+  { path: 'citas', component: CitasComponent },
 
 
 ]
@@ -46,18 +42,14 @@ const routes: Routes = [
     HomeComponent,
     TablaPacientesComponent,
     BuscarComponent,
-    // PacienteCrudComponent,
-    // PacientesComponent,
-    // UnisauComponent,
-    // ConstanciasComponent,
-    // HomeComponent,
-    // ConsultasComponent,
-    // DetallePacienteComponent,
+    CitasComponent,
     FormatoDPIPipe,
     NumberToTextPipe,
     EdadPipe,
     FortmatPhone,
     FormularioPacienteComponent,
+    IngresoComponent,
+
 
    ],
   imports: [
@@ -65,16 +57,15 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'pacientes', component: TablaPacientesComponent },
       { path: 'crear', component: FormularioPacienteComponent },
       { path: 'paciente/edit/:id', component: FormularioPacienteComponent },
-      { path: 'buscar', component: BuscarComponent},
-      // { path: 'detalleP/view/:id', component: DetallePacienteComponent },
-      // { path: 'consultas', component: ConsultasComponent },
-      // { path: 'unisau', component: UnisauComponent },
-      // { path: 'constancias', component: ConstanciasComponent },
+      { path: 'buscar/view/:id', component: BuscarComponent},
+      { path: 'ingreso/view/:id', component: IngresoComponent },
+      { path: 'citas', component: CitasComponent },
 
 
 

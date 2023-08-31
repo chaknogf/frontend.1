@@ -16,12 +16,27 @@ export class PacientesService {
   private urlapi = "http://localhost:8000";
   constructor(private http: HttpClient) { }
 
-  getPacientes(): Observable<any>{
+  getPacientes(): Observable<any> {
     return this.http.get(this.urlapi + "/pacientes");
   }
 
-  getPaciente(exp: number): Observable<any>{
+  getPaciente(exp: number): Observable<any> {
     return this.http.get(this.urlapi + "/paciente/" + exp);
+  }
+
+  getNombre(nombre: string, apellido: string): Observable<any> {
+    const queryParams = `?nombre=${nombre}&apellido=${apellido}`;
+    return this.http.get(`${this.urlapi}/pacientefind/${queryParams}`);
+  }
+
+  getIdPaciente(id: number): Observable<any> {
+    const queryParams = `?id=${id}`;
+    return this.http.get(`${this.urlapi}/pacienteId/${queryParams}`);
+  }
+
+  getdpi(cui: number): Observable<any> {
+    const queryParams = `?cui=${cui}`;
+    return this.http.get(`${this.urlapi}/dpi/${queryParams}`);
   }
 
   crearPaciente(paciente: Ipaciente): Observable<any>{

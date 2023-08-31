@@ -1,8 +1,7 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component } from '@angular/core';
 import { PacientesService } from 'src/app/services/pacientes.service';
 import { Ipaciente } from 'src/app/models/Ipaciente';
 import { ActivatedRoute, Router } from '@angular/router';
-
 
 
 @Component({
@@ -14,9 +13,13 @@ export class TablaPacientesComponent{
   public pacientes: Ipaciente[] = []; // Registros a mostrar en la página actual
   public filteredPacientes: Ipaciente[] = [];
   public searchText: string = '';
-  public totalRegistros: number = 10; // Total de registros en la lista
+  public totalRegistros: number = 12; // Total de registros en la lista
   public paginaActual: number = 1; // Página actual
-  public expedienteBuscar: number = 0;
+  public expedienteBuscar: any = '';
+  public nombreBuscar: string = '';
+  public apellidoBuscar: string = '';
+  public dpiBuscar: any = '';
+
 
   constructor(private pacientesService: PacientesService, private router: Router, private activateRoute: ActivatedRoute) { }
   reset: boolean = false;
@@ -24,7 +27,7 @@ export class TablaPacientesComponent{
   ngOnInit() {
     this.getPacientes();
     this.paginarPacientes();
-    this.buscarPaciente();
+
 
   }
 
@@ -36,22 +39,6 @@ export class TablaPacientesComponent{
       this.paginarPacientes();//Llama a la función aquí para paginar automáticamente
     });
   }
-
-
-  buscarPaciente() {
-    if (this.expedienteBuscar === 0) {
-      this.getPacientes(); // Si no se proporciona expediente, muestra todos los pacientes
-    } else {
-      this.pacientesService.getPaciente(this.expedienteBuscar).subscribe(data => {
-        this.filteredPacientes = data;
-        this.paginarPacientes();
-      });
-    }
-  }
-
-
-
-
 
 
 
@@ -86,7 +73,7 @@ export class TablaPacientesComponent{
   }
 
   paginarPacientes() {
-    const tamanoPagina = 10;
+    const tamanoPagina = 12;
     const indiceInicio = (this.paginaActual - 1) * tamanoPagina;
     const indiceFin = indiceInicio + tamanoPagina;
     this.filteredPacientes = this.pacientes.slice(indiceInicio, indiceFin);
@@ -109,6 +96,64 @@ export class TablaPacientesComponent{
   totalPaginas(): number {
     return Math.ceil(this.pacientes.length / this.totalRegistros);
 
+  }
+
+  buscarPaciente() {
+    if (this.expedienteBuscar !== 0) {
+      this.pacientesService.getPaciente(this.expedienteBuscar).subscribe(data => {
+        if (data) {
+          this.pacientes = [data]; // Establece el arreglo de pacientes para mostrar solo el resultado de la búsqueda
+          this.paginarPacientes(); // Pagina los resultados
+        } else {
+          // No se encontró ningún paciente con el número de expediente proporcionado
+          this.pacientes = [];
+          this.filteredPacientes = [];
+          this.totalRegistros = 0;
+        }
+      });
+    } else {
+      // ExpedienteBuscar es 0 o un valor inválido, muestra todos los pacientes
+      this.getPacientes();
+    }
+  }
+
+  limpiarInput() {
+    this.expedienteBuscar = ''; // Limpia el contenido del input
+    this.nombreBuscar = '';
+    this.apellidoBuscar = ''
+    this.getPacientes(); // Obtén todos los pacientes nuevamente
+  }
+
+  buscarPacientes() {
+    if (this.nombreBuscar || this.apellidoBuscar) {
+      this.pacientesService.getNombre(this.nombreBuscar, this.apellidoBuscar).subscribe(data => {
+        this.actualizarPacientes(data);
+
+      });
+    } else if (this.dpiBuscar) {
+      this.pacientesService.getdpi(this.dpiBuscar).subscribe(data => {
+        this.actualizarPacientes(data);
+
+
+      });
+    } else {
+      this.getPacientes();
+    }
+  }
+
+  private actualizarPacientes(data: any[]) {
+    if (data.length > 0) {
+      this.pacientes = data.sort((a: { expediente: number; }, b: { expediente: number; }) => b.expediente - a.expediente);
+      this.filteredPacientes = data;
+      this.paginarPacientes();
+      this.dpiBuscar = '';
+      this.nombreBuscar = '';
+      this.apellidoBuscar = ''
+    } else {
+      this.pacientes = [];
+      this.filteredPacientes = [];
+      this.totalRegistros = 0;
+    }
   }
 
 

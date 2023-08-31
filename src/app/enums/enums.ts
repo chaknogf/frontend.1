@@ -1,3 +1,22 @@
+export interface Especialidad {
+  value: number;
+  label: string;
+}
+
+export const servicio: Especialidad[] = [
+  { value: 1, label: 'Medicina Interna' },
+  { value: 2, label: 'Pediatria' },
+  { value: 3, label: 'Ginecologia y Obstetricia' },
+  { value: 4, label: 'Cirugia' },
+  { value: 5, label: 'Traumatologia' },
+  { value: 6, label: 'Psicologia' },
+  { value: 7, label: 'Nutrición' },
+
+]
+
+
+
+
 export interface Nacionalidad {
   value: number;
   label: string;

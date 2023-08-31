@@ -1,0 +1,87 @@
+<form class=""">
+  <div>
+      <h2>DATOS DE LA CITA</h2>
+      <hr class="border border-primary  opacity-75">
+
+  </div>
+
+
+
+  <div class="row g-3">
+      <div class="col">
+
+          <!-- --------------Elemento de fecha-------------- -->
+
+          <label>Fecha:</label>
+          <br>
+          <input class="fecha" type="date" id="fecha" name="fecha" required>
+
+      </div>
+
+
+
+      <div class="col">
+          <label>No. Expediente:</label>
+        <input type="text" class="form-control">
+      </div>
+  </div>
+
+
+      <div>
+          <label>Nombre:</label>
+          <input type="text" class="form-control">
+      </div>
+
+
+
+  <!-- Combobox Especialidad -->
+
+
+  <div class="row g-3">
+      <div class="col">
+
+          <label> Especialidad:</label>
+          <br>
+          <select name="lista-esp" class="operaciones_pwd">
+
+              <option>Traumatología</option>
+
+              <option>Medicina Interna</option>
+
+              <option>Psicología</option>
+
+              </select>
+
+
+      </div>
+
+
+      <div class="col">
+          <label>No. de cita:</label>
+          <input type="text" class="form-control">
+      </div>
+  </div>
+
+
+  <label>Comentarios:</label>
+  <div class="form-floating">
+
+      <textarea class="form-text-area" id="floatingTextarea"></textarea>
+
+  </div>
+
+
+      <button type="button" class="btn btn-outline-primary" >Guardar</button>
+
+
+
+
+      <div class="col">
+
+          <br><br>
+          <button type="button" class="btn btn-outline-success">Guardar</button>
+          <button type="button" class="btn btn-outline-danger">Cancelar</button>
+
+      </div>
+
+  </form>

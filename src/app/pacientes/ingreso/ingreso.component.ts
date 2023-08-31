@@ -4,12 +4,11 @@ import { PacientesService } from 'src/app/services/pacientes.service';
 import { Ipaciente } from 'src/app/models/Ipaciente';
 
 @Component({
-  selector: 'buscar',
-  templateUrl: './buscar.component.html',
-  styleUrls: ['./buscar.component.css']
+  selector: 'ingreso',
+  templateUrl: './ingreso.component.html',
+  styleUrls: ['./ingreso.component.css']
 })
-export class BuscarComponent implements OnInit {
-  public detalleVisible: boolean = false;
+export class IngresoComponent {public detalleVisible: boolean = false;
   public patient: Ipaciente | undefined;
 
   constructor(
