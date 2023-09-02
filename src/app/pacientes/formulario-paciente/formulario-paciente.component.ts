@@ -32,7 +32,7 @@ export class FormularioPacienteComponent implements OnInit {
     apellido: "",
     dpi: 0,
     pasaporte: "",
-    sexo: "M",
+    sexo: "",
     nacimiento: new Date(),
     nacionalidad: 1,
     lugar_nacimiento: 0,
@@ -93,7 +93,7 @@ export class FormularioPacienteComponent implements OnInit {
 
     // Verificar si se proporcionó un ID de paciente
     if (params['id']) {
-      this.PacientesService.getPaciente(params['id'])
+      this.PacientesService.getIdPaciente(params['id'])
         .subscribe(
           data => {
             this.p = data;

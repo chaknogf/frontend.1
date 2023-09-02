@@ -51,12 +51,12 @@
 
     <div class="col-md-6">
       <label>DPI</label>
-      <input type="number" id="dpi" name="dpi" class="form-control bg-light bg-opacity-25" [(ngModel)]="p.dpi" name="dpi" placeholder="dpi" autofocus>
+      <input type="number" id="dpi" name="dpi" class="form-control bg-light bg-opacity-25" [(ngModel)]="p.dpi" placeholder="dpi" autofocus>
     </div>
 
     <div class="col-md-6">
       <label>Pasaporte</label>
-      <input type="text" id="pasaporte" name="pasaporte" class="form-control bg-light bg-opacity-25" [(ngModel)]="p.pasaporte" name="pasaporte" placeholder="pasaporte" autofocus>
+      <input type="text" id="pasaporte" name="pasaporte" class="form-control bg-light bg-opacity-25" [(ngModel)]="p.pasaporte"  placeholder="pasaporte" autofocus>
     </div>
 
     <div class="col-md-6">
@@ -98,8 +98,9 @@
 
     <div class="col-md-6">
       <label>Educación</label>
+
       <select id="educacion" class="form-control bg-light bg-opacity-25" [(ngModel)]="p.educacion" name="educacion" autofocus>
-        <option *ngFor="let option of e.academic" [value]="option.value">{{option.label}}</option>
+        <option *ngFor="let option of e.academic" [value]="option.value || p.educacion">{{option.label}}</option>
       </select>
     </div>
 

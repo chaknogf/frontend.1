@@ -1,4 +1,4 @@
-import { Municipio, Nacionalidad, Etnias, Ecivil, Academic, Parents, Lenguage } from './../enums/enums';
+import { Municipio, Nacionalidad, Etnias, Ecivil, Academic, Parents, Lenguage, servicio, Especialidad } from './../enums/enums';
 
 
 export interface Ienum {
@@ -10,4 +10,9 @@ export interface Ienum {
   parents: Parents[];
   lenguage: Lenguage[];
 
+
+}
+
+export interface IenumEspecialidad {
+  servicio: Especialidad[]
 }

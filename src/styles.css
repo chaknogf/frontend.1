@@ -1174,11 +1174,11 @@ progress {
   }
   .g-sm-4,
   .gx-sm-4 {
-    --bs-gutter-x: 1.5rem;
+    --bs-gutter-x: 2.5rem;
   }
   .g-sm-4,
   .gy-sm-4 {
-    --bs-gutter-y: 1.5rem;
+    --bs-gutter-y: 2.5rem;
   }
   .g-sm-5,
   .gx-sm-5 {
@@ -12175,4 +12175,55 @@ textarea.form-control-lg {
 .compact-calendar td.current-day {
   background-color: #ffc107;
   font-weight: bold;
+}
+
+.form-citas {
+  max-width: 800px;
+  height: auto;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: calc(50% - 10px);
+  margin-bottom: 15px;
+  margin-top: 100px;
+
+}
+
+
+
+
+/* Personaliza la animación de entrada */
+.bs-datepicker.fade-enter-active {
+  animation: customFadeIn 0.5s ease-in-out;
+}
+
+/* Personaliza la animación de salida */
+.bs-datepicker.fade-leave-active {
+  animation: customFadeOut 0.5s ease-in-out;
+}
+
+/* Define las keyframes para la animación de entrada */
+@keyframes customFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Define las keyframes para la animación de salida */
+@keyframes customFadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
 }

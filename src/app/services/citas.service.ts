@@ -22,6 +22,10 @@ export class CitasService {
     return this.http.get(this.urlapi + "/cita/id/")
   }
 
+  agendar(cita: Icitas): Observable<any>{
+    return this.http.post(this.urlapi + "/cita/", cita);
+   }
+
 
 
 }
